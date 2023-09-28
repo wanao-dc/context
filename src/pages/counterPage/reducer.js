@@ -21,6 +21,7 @@ export const CounterPageReducer = (state, action) => {
       return {
         ...state,
         count: state.count + state.valueToAdd,
+        valueToAdd: 0,
       }
     default:
       return state
