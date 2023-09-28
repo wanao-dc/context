@@ -20,8 +20,7 @@ export const CounterPageReducer = (state, action) => {
     case CounterPageConstants.SUBMIT_FORM:
       return {
         ...state,
-        count: state.count + state.valueToAdd,
-        valueToAdd: 0,
+        ...action.payload,
       }
     default:
       return state

@@ -40,6 +40,10 @@ function CounterPage({ initialCount }) {
     event.preventDefault();
     dispatch({
       type: CounterPageConstants.SUBMIT_FORM,
+      payload: {
+        count: state.count + state.valueToAdd,
+        valueToAdd: 0,
+      }
     })
     // setCount(prev => prev + valueToAdd);
     // setValueToAdd(0);
