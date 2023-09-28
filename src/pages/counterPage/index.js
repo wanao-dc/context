@@ -1,45 +1,13 @@
 import { useReducer } from 'react';
-import Button from '../components/Button';
-import Panel from '../components/Panel';
-
-const CounterPageConstants =  {
-  'INCREMENT': 'increment',
-  'DECREMENT': 'decrement',
-  'CHANGE_VALUE_TO_ADD': 'change_value_to_add',
-  'SUBMIT_FORM': 'submit_form',
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case CounterPageConstants.INCREMENT:
-      return {
-        ...state,
-        count: state.count + 1
-      }
-    case CounterPageConstants.DECREMENT:
-      return {
-        ...state,
-        count: state.count - 1
-      }
-    case CounterPageConstants.CHANGE_VALUE_TO_ADD:
-      return {
-        ...state,
-        valueToAdd: action.payload
-      }
-    case CounterPageConstants.SUBMIT_FORM:
-      return {
-        ...state,
-        count: state.count + state.valueToAdd,
-      }
-    default:
-      return state
-  }
-}
+import Button from '../../components/Button';
+import Panel from '../../components/Panel';
+import { CounterPageConstants } from './constants';
+import { CounterPageReducer } from './reducer';
 
 function CounterPage({ initialCount }) {
   // const [count, setCount] = useState(initialCount);
   // const [valueToAdd, setValueToAdd] = useState(0);
-  const [state, dispatch] = useReducer(reducer, {
+  const [state, dispatch] = useReducer(CounterPageReducer, {
     count: initialCount,
     valueToAdd: 0,
   });

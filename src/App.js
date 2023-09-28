@@ -1,6 +1,6 @@
 import Sidebar from './components/Sidebar';
 import Route from './components/Route';
-import CounterPage from './pages/CounterPage';
+import CounterPage from './pages/counterPage';
 
 function App() {
   return (
