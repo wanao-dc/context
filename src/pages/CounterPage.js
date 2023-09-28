@@ -10,31 +10,30 @@ const CounterPageConstants =  {
 };
 
 const reducer = (state, action) => {
-  if (action.type === CounterPageConstants.INCREMENT) {
-    return {
-      ...state,
-      count: state.count + 1
-    }
+  switch (action.type) {
+    case CounterPageConstants.INCREMENT:
+      return {
+        ...state,
+        count: state.count + 1
+      }
+    case CounterPageConstants.DECREMENT:
+      return {
+        ...state,
+        count: state.count - 1
+      }
+    case CounterPageConstants.CHANGE_VALUE_TO_ADD:
+      return {
+        ...state,
+        valueToAdd: action.payload
+      }
+    case CounterPageConstants.SUBMIT_FORM:
+      return {
+        ...state,
+        count: state.count + state.valueToAdd,
+      }
+    default:
+      return state
   }
-  if (action.type === CounterPageConstants.DECREMENT) {
-    return {
-      ...state,
-      count: state.count - 1
-    }
-  }
-  if (action.type === CounterPageConstants.CHANGE_VALUE_TO_ADD) {
-    return {
-      ...state,
-      valueToAdd: action.payload
-    }
-  }
-  if (action.type = CounterPageConstants.SUBMIT_FORM) {
-    return {
-      ...state,
-      count: state.count + state.valueToAdd,
-    }
-  }
-  return state;
 }
 
 function CounterPage({ initialCount }) {
