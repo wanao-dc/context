@@ -1,3 +1,4 @@
+import { produce } from 'immer';
 import { useReducer } from 'react';
 import Button from '../../components/Button';
 import Panel from '../../components/Panel';
@@ -7,7 +8,7 @@ import { CounterPageReducer } from './reducer';
 function CounterPage({ initialCount }) {
   // const [count, setCount] = useState(initialCount);
   // const [valueToAdd, setValueToAdd] = useState(0);
-  const [state, dispatch] = useReducer(CounterPageReducer, {
+  const [state, dispatch] = useReducer(produce(CounterPageReducer), {
     count: initialCount,
     valueToAdd: 0,
   });
@@ -40,10 +41,6 @@ function CounterPage({ initialCount }) {
     event.preventDefault();
     dispatch({
       type: CounterPageConstants.SUBMIT_FORM,
-      payload: {
-        count: state.count + state.valueToAdd,
-        valueToAdd: 0,
-      }
     })
     // setCount(prev => prev + valueToAdd);
     // setValueToAdd(0);
